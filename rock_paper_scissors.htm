@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Responsive Rock Paper Scissors</title>
+
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <style>
+      /* Base & Body */
+      body,
+      html {
+        height: 100%;
+        background-color: #121212;
+        font-family: "Press Start 2P", cursive;
+        color: #eee;
+        margin: 0;
+        padding: 0;
+      }
+
+      #hero {
+        display: flex;
+        height: 100vh;
+        width: 100%;
+        padding: 2rem;
+        box-sizing: border-box;
+      }
+
+      /* Side Tab */
+      #side-tab {
+        background: #1e1e2f;
+        width: 20%;
+        min-width: 180px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1.5rem;
+        padding: 2rem 0;
+        box-shadow: inset 2px 0 6px rgba(255, 255, 255, 0.1);
+        border-radius: 0 20px 20px 0;
+      }
+
+      .container {
+        background: #2a2a3d;
+        border-radius: 15px;
+        width: 130px;
+        height: 130px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: transform 0.25s ease, background-color 0.25s ease;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      }
+
+      .container:hover {
+        background-color: #3a3a55;
+        transform: scale(1.1);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
+      }
+
+      .container i {
+        font-size: 4rem;
+        margin-bottom: 0.4rem;
+        color: #f0a500;
+        text-shadow: 0 0 10px #f0a500aa;
+      }
+
+      .container span {
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 1px;
+        color: #ddd;
+      }
+
+      /* Main Box */
+      #main-box {
+        flex: 1;
+        background: linear-gradient(135deg, #232526, #1c1c2c);
+        border-radius: 20px;
+        margin-left: 1rem;
+        padding: 2rem 3rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: #ddd;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+      }
+
+      #message-box {
+        font-size: 3.5rem;
+        font-weight: 700;
+        margin-bottom: 2rem;
+        letter-spacing: 2px;
+        color: #f0a500;
+        text-shadow: 0 0 10px #f0a500aa;
+        min-height: 4rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+
+      #computerText,
+      #userText {
+        font-size: 4rem;
+        color: #f0a500;
+        text-shadow: 0 0 15px #f0a500bb;
+      }
+
+      #main-box > div:nth-of-type(3) {
+        margin-top: 3rem;
+        text-align: center;
+      }
+
+      #main-box > div:nth-of-type(3) > div {
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-around;
+        max-width: 400px;
+        gap: 2rem;
+      }
+
+      #main-box > div:nth-of-type(3) > div span {
+        font-weight: 700;
+        font-size: 1.2rem;
+        color: #ccc;
+      }
+
+      /* Reset Button */
+      #js-reset-btn {
+        margin-top: 30px;
+        background-color: #f0a500;
+        color: #222;
+        font-weight: 700;
+        border: none;
+        border-radius: 25px;
+        padding: 12px 40px;
+        font-size: 1.1rem;
+        cursor: pointer;
+        box-shadow: 0 6px 12px rgba(240, 165, 0, 0.6);
+        transition: background-color 0.3s ease, transform 0.3s ease;
+      }
+
+      #js-reset-btn:hover {
+        background-color: #ffbc35;
+        transform: scale(1.05);
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        #hero {
+          flex-direction: column;
+          height: auto;
+          padding: 2rem;
+        }
+
+        #side-tab {
+          flex-direction: row;
+          width: 100%;
+          height: auto;
+          border-radius: 20px;
+          padding: 1rem 0;
+          gap: 2rem;
+          margin-bottom: 2rem;
+        }
+
+        .container {
+          width: 90px;
+          height: 90px;
+        }
+
+        .container i {
+          font-size: 3.5rem;
+        }
+        .container span {
+          font-size: 0.5rem;
+        }
+
+        #message-box {
+          font-size: 4vw;
+        }
+
+        #computerText,
+        #userText {
+          font-size: 3rem;
+        }
+
+        /* For smaller screens, stack these vertically */
+        #main-box > div:nth-of-type(2) {
+          flex-direction: column !important;
+          width: 100% !important;
+          gap: 1.5rem !important;
+        }
+
+        #main-box > div:nth-of-type(3) > div {
+          flex-direction: column;
+          gap: 15px;
+        }
+
+        #js-reset-btn {
+          width: 100%;
+          font-size: 1rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="hero">
+      <!-- Side Tab -->
+      <section id="side-tab">
+        <div class="container" id="rock" title="Rock">
+          <i class="fa-solid fa-hand-back-fist"></i>
+          <span>Rock</span>
+        </div>
+        <div class="container" id="paper" title="Paper">
+          <i class="fa-solid fa-hand"></i>
+          <span>Paper</span>
+        </div>
+        <div class="container" id="scissors" title="Scissors">
+          <i class="fa-solid fa-hand-scissors"></i>
+          <span>Scissors</span>
+        </div>
+      </section>
+
+      <!-- Main Box -->
+      <section id="main-box">
+        <span id="message-box">START GAME</span>
+
+        <div
+          style="
+            display: flex;
+            justify-content: space-evenly;
+            width: 80%;
+            margin-top: 3rem;
+            gap: 4rem;
+            flex-wrap: nowrap;
+          "
+        >
+          <div
+            class="container"
+            style="
+              flex: 1 1 130px;
+              max-width: 150px;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+            "
+          >
+            <span id="computerText">
+              <i class="fa-solid fa-hand"></i>
+            </span>
+            <span style="color: white; font-weight: bold">Computer</span>
+          </div>
+          <div
+            class="container"
+            style="
+              flex: 1 1 130px;
+              max-width: 150px;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+            "
+          >
+            <span id="userText">
+              <i class="fa-solid fa-hand"></i>
+            </span>
+            <span style="color: white; font-weight: bold">You</span>
+          </div>
+        </div>
+
+        <div
+          style="
+            margin-top: 3rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          "
+        >
+          <span>SCORE</span>
+          <div
+            style="
+              margin-top: 20px;
+              display: flex;
+              justify-content: space-around;
+              max-width: 400px;
+              gap: 2rem;
+            "
+          >
+            <span>Computer: <span id="computerScore">0</span></span>
+            <span>Your: <span id="userScore">0</span></span>
+          </div>
+        </div>
+
+        <button id="js-reset-btn">Reset Scores</button>
+      </section>
+    </div>
+
+    <script src="./rock_paper.js"></script>
+  </body>
+</html>
