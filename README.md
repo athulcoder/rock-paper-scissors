@@ -2,9 +2,7 @@
 
 A fun and interactive **Rock Paper Scissors** game built using **HTML**, **CSS**, and **JavaScript**. Challenge yourself or your friends and see who wins!
 
-![Rock Paper Scissors Screenshot](assets/screenshot.png) <!-- Replace with your actual image path -->
-
----
+check it out : https://athulcoder.github.io/rock-paper-scissors/
 
 ## 🎮 Features
 
