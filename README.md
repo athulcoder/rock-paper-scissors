@@ -1,3 +1,4 @@
 # ROCK PAPER SCISSORS GAME
 
-## DEVELOPER: athulocer
+DEVELOPER: athulcoder
+using vanilla javascript
